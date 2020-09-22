@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Library.DomainModels\Library.DomainModels.csproj" />
+    <ProjectReference Include="..\Library.Services.Interface\Library.Services.Interface.csproj" />
+  </ItemGroup>
+
+</Project>
