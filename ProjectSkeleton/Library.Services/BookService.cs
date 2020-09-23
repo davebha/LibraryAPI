@@ -9,7 +9,7 @@ namespace Library.Services
 {
     public class BookService : IBookService
     {
-        public Task<Book> AddBook(Author author, string title)
+        public Task<Book> AddBook(int AuthorId, string title)
         {
             throw new NotImplementedException();
         }
@@ -18,5 +18,7 @@ namespace Library.Services
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
