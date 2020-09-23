@@ -1,4 +1,5 @@
-﻿using Library.DomainModels;
+﻿using Library.DataAccess.Interface;
+using Library.DomainModels;
 using Library.Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,16 @@ namespace Library.Services
 {
     public class BookService : IBookService
     {
+        private readonly IBookRepository _bookRepository;
+
         public Task<Book> AddBook(int AuthorId, string title)
         {
+
+
+            //Set IsAvailable to true
+            //- CreatedOn = DateTime.Now
+            //- Title must be at least 3 characters long
+            //-AuthorId > 0
             throw new NotImplementedException();
         }
 
