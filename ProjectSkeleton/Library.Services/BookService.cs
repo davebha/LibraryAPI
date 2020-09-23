@@ -18,18 +18,25 @@ namespace Library.Services
 
 
         }
-        public Task<Book> AddBook(int AuthorId, string title)
+        public async Task<Book>  AddBook(int authorId, string title)
         {
+            if (authorId <= 0)
+            {
+                throw new ArgumentException("Author ID must be a positive integer greater than 0! ");
+            }
+            
+            if(title.Length==0||title=="" || title==" ")
+            {
+                throw new ArgumentException("Title is mandatory!");
+            }
+
+            Book newBook = new Book() { Title = title, AuthorId = authorId, CreatedOn = DateTime.Now };
 
 
-            //Set IsAvailable to true
-            //- CreatedOn = DateTime.Now
-            //- Title must be at least 3 characters long
-            //-AuthorId > 0
-            throw new NotImplementedException();
+            return await _bookRepository.Create(newBook);
         }
 
-        public Task<IEnumerable<Book>> GetAllBooks()
+        public async Task<IEnumerable<Book>> GetAllBooks()
         {
             throw new NotImplementedException();
         }
