@@ -12,6 +12,12 @@ namespace Library.Services
     {
         private readonly IBookRepository _bookRepository;
 
+        public BookService(IBookRepository bookRepository)
+        {
+            _bookRepository = bookRepository;
+
+
+        }
         public Task<Book> AddBook(int AuthorId, string title)
         {
 
