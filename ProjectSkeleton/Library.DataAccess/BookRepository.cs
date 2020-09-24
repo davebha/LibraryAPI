@@ -9,12 +9,19 @@ namespace Library.DataAccess
 {
     public class BookRepository : IBookRepository
     {
-        public Task<Book> AddBook(Book book)
+        private readonly LibraryDbContext _dbContext;
+
+        public BookRepository(LibraryDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
+        public async Task<Book> AddBook(Book book)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Book>> GetAllBooks()
+        public async Task<IEnumerable<Book>> GetAllBooks()
         {
             throw new NotImplementedException();
         }
