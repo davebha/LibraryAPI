@@ -41,7 +41,7 @@ namespace Library.Services
 
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            throw new NotImplementedException();
+            return await _bookRepository.GetAllBooks();
         }
 
 
