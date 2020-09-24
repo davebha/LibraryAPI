@@ -1,5 +1,6 @@
 ﻿using Library.DataAccess.Interface;
 using Library.DomainModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,12 +19,15 @@ namespace Library.DataAccess
 
         public async Task<Book> AddBook(Book book)
         {
-            throw new NotImplementedException();
+            _dbContext.Books.Add(book);
+            await _dbContext.SaveChangesAsync();
+            return book;
+
         }
 
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Books.ToListAsync();
         }
     }
 }
