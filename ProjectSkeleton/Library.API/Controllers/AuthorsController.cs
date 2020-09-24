@@ -21,6 +21,7 @@ namespace Library.API.Controllers
             _authorService = authorService;
         }
 
+        [HttpPost]
         public async Task<Author> Create(string name)
         {
             return await _authorService.Create(name);
