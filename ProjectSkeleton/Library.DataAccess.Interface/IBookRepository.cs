@@ -10,7 +10,7 @@ namespace Library.DataAccess.Interface
     {
         Task<Book> AddBook(Book book);
 
-        Task<IEnumerable<Book>> GetAll();
+        Task<IEnumerable<Book>> GetAllBooks();
 
     }
 }
