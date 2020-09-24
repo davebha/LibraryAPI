@@ -12,6 +12,8 @@ namespace Library.Utils.Extensions
         public static IServiceCollection AddLibraryServicesDependencies(this IServiceCollection services)
         {
             services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<IBookService, BookService>();
+
 
             return services;
         }
