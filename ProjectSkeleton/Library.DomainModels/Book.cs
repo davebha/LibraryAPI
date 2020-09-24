@@ -15,6 +15,7 @@ namespace Library.DomainModels
 
         [NotNull]
         [MaxLength(150)]
+        [MinLength(3)]
         public string Title { get; set; }
 
         [NotNull]
