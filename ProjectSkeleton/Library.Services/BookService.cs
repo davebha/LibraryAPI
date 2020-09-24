@@ -36,7 +36,7 @@ namespace Library.Services
             Book newBook = new Book() { Title = title, AuthorId = authorId, CreatedOn = DateTime.Now };
 
 
-            return await _bookRepository.Create(newBook);
+            return await _bookRepository.AddBook(newBook);
         }
 
         public async Task<IEnumerable<Book>> GetAllBooks()
