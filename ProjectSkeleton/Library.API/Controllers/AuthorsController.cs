@@ -21,6 +21,10 @@ namespace Library.API.Controllers
             _authorService = authorService;
         }
 
+        public async Task<Author> Create(string title)
+        {
+
+        }
         [HttpGet]
         public async Task<IEnumerable<Author>> GetAll()
         {
