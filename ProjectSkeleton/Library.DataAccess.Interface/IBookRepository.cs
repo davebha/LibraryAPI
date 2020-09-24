@@ -8,7 +8,7 @@ namespace Library.DataAccess.Interface
 {
     public interface IBookRepository
     {
-        Task<Book> Create(Book book);
+        Task<Book> AddBook(Book book);
 
         Task<IEnumerable<Book>> GetAll();
 
