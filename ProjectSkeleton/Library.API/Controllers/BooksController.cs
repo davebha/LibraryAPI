@@ -20,7 +20,6 @@ namespace Library.API.Controllers
         [HttpPost]
         public async Task<Book> AddBook(string title,int authorId)
         {
-
             return await _bookService.AddBook(title , authorId);
         }
 
