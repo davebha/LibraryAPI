@@ -8,7 +8,7 @@ namespace Library.Services.Interface
 {
     public interface IBookService
     {
-        Task<Book> AddBook(int AuthorId, string title);
+        Task<Book> AddBook(string title, int authorId);
         Task<IEnumerable<Book>> GetAllBooks();
 
     }

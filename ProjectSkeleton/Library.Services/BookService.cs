@@ -21,7 +21,7 @@ namespace Library.Services
         }
 
         
-        public async Task<Book>  AddBook(int authorId, string title)
+        public async Task<Book>  AddBook(string title, int authorId)
         {
             if (authorId <= 0)
             {

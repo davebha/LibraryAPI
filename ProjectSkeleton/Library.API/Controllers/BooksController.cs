@@ -18,10 +18,10 @@ namespace Library.API.Controllers
         }
 
         [HttpPost]
-        public async Task<Book> AddBook(int authorID,string title)
+        public async Task<Book> AddBook(string title,int authorId)
         {
 
-            return await _bookService.AddBook(authorID, title);
+            return await _bookService.AddBook(title , authorId);
         }
 
         [HttpGet]
