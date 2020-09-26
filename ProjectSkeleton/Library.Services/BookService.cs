@@ -28,12 +28,13 @@ namespace Library.Services
                 throw new ArgumentException("Author ID must be a positive integer greater than 0! ");
             }
             
-            if(title.Length==0||title=="" || title==" ")
+             
+            if(String.IsNullOrWhiteSpace(title))
             {
                 throw new ArgumentException("Title is mandatory!");
             }
 
-            Book newBook = new Book() { Title = title, AuthorId = authorId, CreatedOn = DateTime.Now };
+            Book newBook = new Book() { Title = title, IsAvailable=true,AuthorId = authorId, CreatedOn = DateTime.Now };
 
 
             return await _bookRepository.AddBook(newBook);
