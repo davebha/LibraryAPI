@@ -31,5 +31,10 @@ namespace Library.API.Controllers
         {
             return await _authorService.GetAll();
         }
+
+        //[HttpGet("id")]
+        //public async Task<Author> GetById(int id)
+        //     { return  null; }
+
     }
 }
