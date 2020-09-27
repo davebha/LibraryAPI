@@ -39,6 +39,11 @@ namespace Library.Services
         {
             return await _authorRepository.GetById(id);
         }
+
+        public async Task<Author> GetByName(string name)
+        {
+            return await _authorRepository.GetByName(name);
+        }
     }
 
 }

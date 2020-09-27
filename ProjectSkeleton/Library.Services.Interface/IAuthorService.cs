@@ -10,5 +10,7 @@ namespace Library.Services.Interface
     {
         Task<Author> Create(string name);
         Task<IEnumerable<Author>> GetAll();
+        Task<Author> GetById(int id);
+        Task<Author> GetByName(string name);
     }
 }

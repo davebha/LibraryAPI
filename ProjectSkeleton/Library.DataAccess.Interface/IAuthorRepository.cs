@@ -10,5 +10,7 @@ namespace Library.DataAccess.Interface
     {
         Task<Author> Create(Author author);
         Task<IEnumerable<Author>> GetAll();
+        Task<Author> GetById(int id);
+        Task<Author> GetByName(string name);
     }
 }

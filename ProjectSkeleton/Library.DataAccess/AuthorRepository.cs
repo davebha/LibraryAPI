@@ -36,5 +36,10 @@ namespace Library.DataAccess
             return await _dbContext.Authors.FindAsync(id);
             
         }
+
+        public async Task<Author> GetByName(string name)
+        {
+            return await _dbContext.Authors.FindAsync(name);
+        }
     }
 }
