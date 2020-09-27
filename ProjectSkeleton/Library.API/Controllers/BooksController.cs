@@ -29,7 +29,18 @@ namespace Library.API.Controllers
             return await _bookService.GetAllBooks();
         }
 
+        [HttpGet("id")]
+        public async Task<Book> GetBookById(int id)
+        {
 
+            return await _bookService.GetBookById(id);
+        }
+
+        [HttpGet("title")]
+        public async Task<Book> GetBookByName(string title)
+        {
+            return await _bookService.GetBookByName(title);
+        }
 
 
     }

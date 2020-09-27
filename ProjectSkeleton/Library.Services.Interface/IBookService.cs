@@ -10,6 +10,7 @@ namespace Library.Services.Interface
     {
         Task<Book> AddBook(string title, int authorId);
         Task<IEnumerable<Book>> GetAllBooks();
-
+        Task<Book> GetBookById(int id);
+        Task<Book> GetBookByName(string title);
     }
 }

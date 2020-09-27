@@ -11,6 +11,7 @@ namespace Library.DataAccess.Interface
         Task<Book> AddBook(Book book);
 
         Task<IEnumerable<Book>> GetAllBooks();
-
+        Task<Book> GetBookByName(string title);
+        Task<Book> GetBookById(int id);
     }
 }

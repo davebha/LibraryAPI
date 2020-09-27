@@ -29,5 +29,15 @@ namespace Library.DataAccess
         {
             return await _dbContext.Books.ToListAsync();
         }
+
+        public async Task<Book> GetBookById(int id)
+        {
+            return await _dbContext.Books.FindAsync(id);
+        }
+
+        public async Task<Book> GetBookByName(string title)
+        {
+            return await _dbContext.Books.FindAsync(title);
+        }
     }
 }

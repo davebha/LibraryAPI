@@ -45,6 +45,14 @@ namespace Library.Services
             return await _bookRepository.GetAllBooks();
         }
 
+        public async Task<Book> GetBookById(int id)
+        {
+            return await _bookRepository.GetBookById(id);
+        }
 
+        public async Task<Book> GetBookByName(string title)
+        {
+            return await _bookRepository.GetBookByName(title);
+        }
     }
 }
