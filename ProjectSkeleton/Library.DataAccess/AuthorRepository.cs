@@ -3,6 +3,7 @@ using Library.DomainModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,12 @@ namespace Library.DataAccess
         {
             return await _dbContext.Authors
                 .ToListAsync();
+        }
+
+        public async Task<Author> GetById(int id)
+        {
+            return await _dbContext.Authors.FindAsync(id);
+            
         }
     }
 }
