@@ -27,10 +27,10 @@ namespace Library.UnitTests
             BookService bookService = new BookService(fakeBookRepo.Object);
 
             //Act->Calling all methods
-            bookService.AddBook(badTitle, badId);
+            bookService.AddBook(title, badId);
 
             //Assert->Verify result
-            Assert.ThrowsAsync<ArgumentException>(() => bookService.AddBook(badTitle,badId));
+            Assert.ThrowsAsync<ArgumentException>(() => bookService.AddBook(title,badId));
 
         }
 
