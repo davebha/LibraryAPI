@@ -50,7 +50,7 @@ namespace Library.Services
             return await _bookRepository.GetBookById(id);
         }
 
-        public async Task<Book> GetBookByName(string title)
+        public async Task<IEnumerable<Book>> GetBookByName(string title)
         {
             return await _bookRepository.GetBookByName(title);
         }

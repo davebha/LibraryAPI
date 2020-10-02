@@ -37,7 +37,7 @@ namespace Library.API.Controllers
         }
 
         [HttpGet("title")]
-        public async Task<Book> GetBookByName(string title)
+        public async Task<IEnumerable<Book>> GetBookByName(string title)
         {
             return await _bookService.GetBookByName(title);
         }
