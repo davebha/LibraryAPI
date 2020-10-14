@@ -65,5 +65,18 @@ namespace Library.DataAccess
             return book;
 
         }
+
+        //PUT,DELETE
+
+        //Remove book with book object
+        public async Task RemoveBook(Book book)
+        {
+
+            _dbContext.Books.Remove(book);
+
+            await _dbContext.SaveChangesAsync();
+        }
+ 
+
     }
 }
