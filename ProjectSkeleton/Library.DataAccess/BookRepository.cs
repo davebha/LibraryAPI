@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,15 +27,12 @@ namespace Library.DataAccess
 
         }
 
-        public async Task<IEnumerable<Book>> GetAllBooks()
-        {
-            return await _dbContext.Books.ToListAsync();
-        }
+        
 
         public async Task<Book> GetBookById(int id)
         {
 
-            return await _dbContext.Books.FindAsync(id);
+            return await _dbContext.Books.Include(a => a.Author).SingleOrDefaultAsync(d => d.Id == id);
         }
 
         public async Task<IEnumerable<Book>> GetBookByName(string title)
