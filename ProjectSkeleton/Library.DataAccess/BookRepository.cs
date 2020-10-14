@@ -48,6 +48,12 @@ namespace Library.DataAccess
                 //FirstAsync();
         }
 
-        //POST,DELETE
+
+        public async Task<IEnumerable<Book>> GetAllBooks()
+        {
+            return await _dbContext.Books.ToListAsync();
+        }
+
+
     }
 }
