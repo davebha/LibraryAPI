@@ -19,8 +19,7 @@ namespace Library.Services
 
 
         }
-
-        
+     
         public async Task<Book>  AddBook(string title, int authorId)
         {
             if (authorId <= 0)
@@ -44,6 +43,7 @@ namespace Library.Services
         {
             return await _bookRepository.GetAllBooks();
         }
+  
 
         public async Task<Book> GetBookById(int id)
         {
@@ -53,6 +53,21 @@ namespace Library.Services
         public async Task<IEnumerable<Book>> GetBookByName(string title)
         {
             return await _bookRepository.GetBookByName(title);
+        }
+
+        //Update changes  to specific field  will be done at service layer
+
+
+        public async Task<Book> UpdateBookTitle(int id, string newTitle)
+        {
+            //Do the validation
+            
+            var book =await  GetBookById(id);
+            book.Title = newTitle;
+
+            
+            return  await _bookRepository.UpdateBook(book);
+           
         }
     }
 }
