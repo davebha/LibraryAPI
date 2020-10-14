@@ -55,5 +55,15 @@ namespace Library.DataAccess
         }
 
 
+        // public async Task<IEnumerable<>>
+
+
+        public async Task<Book> UpdateBook(Book book)
+        {
+            _dbContext.Books.Update(book);
+            await _dbContext.SaveChangesAsync();
+            return book;
+
+        }
     }
 }
