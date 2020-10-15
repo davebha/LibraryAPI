@@ -12,5 +12,10 @@ namespace Library.Services.Interface
         Task<IEnumerable<Author>> GetAll();
         Task<Author> GetById(int id);
         Task<Author> GetByName(string name);
+        
+        Task<Author> UpdateAuthor(Author author);
+        Task<Author> UpdateIsAlive(int id, bool isAlive);
+
+        Task DeleteAuthorById(int id);
     }
 }

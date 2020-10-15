@@ -40,11 +40,51 @@ namespace Library.API.Controllers
         }
 
         [HttpGet("name")]
-        public async Task<Author> GetByName(string name)
+        public async Task<IActionResult> GetByName(string name)
         {
-            return await _authorService.GetByName(name);
+            var author = await _authorService.GetByName(name);
+            return Ok(author);
+            // return await _authorService.GetByName(name);
 
         }
+
+        /*HttpPut expects whole object
+         * HttpPatch expects only few properties
+         */
+        [HttpPut("author")]
+        public async Task<IActionResult> UpdateAuthor(Author author)
+        {
+            var newAuthor = await _authorService.UpdateAuthor(author);
+
+            return Ok(newAuthor);
+        }
+
+        [HttpPatch("isAlive")]
+        public async Task<IActionResult> UpdateIsAlive (int id,bool isAlive)
+        {
+
+            var newAuthor = await _authorService.UpdateIsAlive(id, isAlive);
+
+            return Ok(newAuthor);
+
+
+
+        }
+
+        //ADD GET CHANGE REMOVE
+
+
+
+        [HttpDelete("id")]
+        public async Task<IActionResult> DeleteAuthorById(int id)
+        {
+             await _authorService.DeleteAuthorById(id);
+            return Ok();
+        }
+
+
+
+
 
     }
 }

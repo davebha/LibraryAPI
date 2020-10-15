@@ -12,5 +12,7 @@ namespace Library.DataAccess.Interface
         Task<IEnumerable<Author>> GetAll();
         Task<Author> GetById(int id);
         Task<Author> GetByName(string name);
+        Task<int> DeleteAuthorById(int id);
+        Task<Author> UpdateAuthor(Author author);
     }
 }

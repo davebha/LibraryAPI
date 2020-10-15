@@ -25,6 +25,14 @@ namespace Library.DataAccess
 
         }
 
+        public async Task<int> DeleteAuthorById(int id)
+        {
+            var author = await _dbContext.Authors.FindAsync(id);
+            _dbContext.Authors.Remove(author);
+           return  await _dbContext.SaveChangesAsync();
+            
+        }
+
         public async Task<IEnumerable<Author>> GetAll()
         {
             return await _dbContext.Authors
@@ -40,6 +48,15 @@ namespace Library.DataAccess
         public async Task<Author> GetByName(string name)
         {
             return await _dbContext.Authors.FindAsync(name);
+        }
+
+        public async Task<Author> UpdateAuthor(Author author)
+        {
+           _dbContext.Authors.Update(author);
+            await _dbContext.SaveChangesAsync();
+
+            return author;
+           // throw new NotImplementedException();
         }
     }
 }
