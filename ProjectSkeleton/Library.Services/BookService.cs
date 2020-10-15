@@ -69,5 +69,29 @@ namespace Library.Services
             return  await _bookRepository.UpdateBook(book);
            
         }
+
+        public async Task<Book> UpdateIsAvailable(int id,bool newStatus)
+        {
+            //
+            var book = await _bookRepository.GetBookById(id);
+            book.IsAvailable = newStatus;
+
+            return await _bookRepository.UpdateBook(book);
+                
+        }
+
+        public async Task RemoveBook(int id)
+        {
+            var book = await GetBookById(id);
+
+            await _bookRepository.RemoveBook(book);
+        }
+
+        public async Task RemoveAllBooks()
+        {
+            //IEnumerable<Book> books
+            //books
+            await _bookRepository.RemoveAllBooks();
+        }
     }
 }
