@@ -78,5 +78,55 @@ namespace Library.DataAccess
         }
  
 
+        /*
+         * Not realistic 
+         */
+        //IEnumerable<Book> books
+        //REMOVE ALL BOOKS
+        //public async Task RemoveAllBooks()
+        //{
+        //    List<Book>  books = (IEnumerable<Book>)GetAllBooks();
+        //    _dbContext.Books.RemoveRange(books);
+        //    //need saveChangesAsync to  execute any EF SQL commands 
+        //     await _dbContext.SaveChangesAsync();
+            
+        //}
+
+
+        //Returns books between specified range
+        public async Task<IEnumerable<Book>> GetBookBetween(DateTime startDate, DateTime endDate)
+        {
+            List<Book> books =await _dbContext.Books.Where(d => d.CreatedOn.Date >= startDate.Date &&  d.CreatedOn.Date <= endDate.Date ).ToListAsync();
+
+            return books;
+           
+        }
+
+
+
+        //Get all the books from authors whose name is like X
+
+        // SELECT books.* FROM BOOKS INNER JOIN Author   WHERE AUTHOR_NAME LIKE 'X';
+
+        //Navigation property=>Object is part of another object
+
+        //TASK<IENUMERABLE<X>> will allow returning of List,arrays
+        //TASK<IQUERYABLE<X>> only good for wrapping logic to filter later
+        public async  Task<IEnumerable<Book>> GetBooksWhereAuthorNameLike(string nameLike){
+            
+
+            List<Book> books = await _dbContext.Books.Include(a=>a.Author).Where(b => b.Author.Name.Contains(nameLike)).ToListAsync();
+
+            // Using Linq to SQL for explicit inner join
+            IQueryable<Book> query = (from b in _dbContext.Books
+                                        join a in _dbContext.Authors on b.AuthorId equals a.Id
+
+                                        where a.Name.Contains(nameLike)
+
+                                        select b);
+
+            return  books;
+        }
+        //IEnumerable
     }
 }
