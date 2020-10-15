@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Library.API
@@ -29,11 +30,12 @@ namespace Library.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddInMemoryLibraryDbContext();
+            //services.AddInMemoryLibraryDbContext();
+            services.AddSqlServerDbContext(Configuration);
             services.AddLibraryRepositoriesDependencies();
             services.AddLibraryServicesDependencies();
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options=>options.SerializerSettings.ReferenceLoopHandling=ReferenceLoopHandling.Ignore);
 
             services.AddSwaggerGen(c =>
             {
