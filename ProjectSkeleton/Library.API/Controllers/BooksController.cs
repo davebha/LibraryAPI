@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Library.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
@@ -17,12 +19,25 @@ namespace Library.API.Controllers
             _bookService = bookService;
         }
 
+        //CREATE
         [HttpPost]
         public async Task<Book> AddBook(string title,int authorId)
         {
             return await _bookService.AddBook(title , authorId);
         }
 
+        //[HttpPost]
+        //[Route("api/books")]
+        //public async Task<IActionResult> CreateBook([FromBody]Book passedBook)
+        //{
+        //    var book = await _bookService.AddBook(passedBook.Title,passedBook.AuthorId);
+
+        //    return Ok(book);
+        //}
+
+
+
+        //READ
         [HttpGet]
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
@@ -30,10 +45,10 @@ namespace Library.API.Controllers
         }
 
         [HttpGet("id")]
-        public async Task<Book> GetBookById(int id)
+        public async Task<IActionResult> GetBookById(int id)
         {
-
-            return await _bookService.GetBookById(id);
+            var book = await _bookService.GetBookById(id);
+            return Ok(book);
         }
 
         [HttpGet("title")]
@@ -42,6 +57,50 @@ namespace Library.API.Controllers
             return await _bookService.GetBookByName(title);
         }
 
+        [HttpGet("createdOnDate")]
+        public async  Task<IEnumerable<Book>> GetBookByDate(DateTime createdOnDate)
+        {
+            return await _bookService.GetBookByDate(createdOnDate);
+        }
 
+        //UPDATE
+
+
+        public async Task<Book> UpdateBookTitle(string newTitle)
+        {
+
+            return await _bookService.UpdateBookTitle(newTitle);
+
+        }
+    
+
+        public async Task<Book> UpdateIsAvailable(bool newStatus)
+        {
+            return await _bookService.UpdateIsAvailable(newStatus);
+
+        }
+
+
+
+        //DELETE 
+
+
+
+
+        //Delete with id parameter
+        [HttpDelete("id")]
+        public async Task<IActionResult> RemoveBook(int id)
+        {
+            await _bookService.GetBookById(id);
+            return Ok();
+        }
+
+        //DeleteAll
+        [HttpDelete]
+        public async Task RemoveAllBooks()
+        {
+             await _bookService.RemoveAllBooks();
+
+        }
     }
 }
