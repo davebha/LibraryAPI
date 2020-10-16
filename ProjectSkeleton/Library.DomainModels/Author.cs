@@ -17,6 +17,9 @@ namespace Library.DomainModels
         [MaxLength(300)]
         public string Name { get; set; }
 
+
+        public bool IsAlive { get; set; }
+
         public virtual ICollection<Book> Books { get; set; }
     }
 }
