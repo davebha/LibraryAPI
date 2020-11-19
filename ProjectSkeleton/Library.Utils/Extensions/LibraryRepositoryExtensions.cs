@@ -16,6 +16,7 @@ namespace Library.Utils.Extensions
         {
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<ILibraryLogRepository, LibraryLogRepository>();
 
             return services;
         }
