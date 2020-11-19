@@ -19,13 +19,11 @@ namespace Library.Services.Interface
 
 
         //UPDATE
-        Task<Book> UpdateBookTitle(string newTitle);
-        Task<Book> UpdateIsAvailable(bool newStatus);
+        Task<Book> UpdateBookTitle(int id,string newTitle);
+        Task<Book> UpdateIsAvailable(int id,bool newStatus);
 
         //DELETE
         Task RemoveBook(int id);
-        Task RemoveAllBooks();
-
         //IEnumerable<Book> books
     }
 }
