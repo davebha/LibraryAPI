@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library.DataAccess.Interface\Library.DataAccess.Interface.csproj" />
     <ProjectReference Include="..\Library.DomainModels\Library.DomainModels.csproj" />
   </ItemGroup>
 
