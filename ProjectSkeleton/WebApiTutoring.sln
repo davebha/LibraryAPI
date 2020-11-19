@@ -23,11 +23,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_UnitTests", "_UnitTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.UnitTests", "Library.UnitTests\Library.UnitTests.csproj", "{49C040F6-02F5-4775-9A50-D8B408E02204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.API", "Library.API\Library.API.csproj", "{0020E1D3-4FB6-4009-9C47-AD0278968509}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.API", "Library.API\Library.API.csproj", "{0020E1D3-4FB6-4009-9C47-AD0278968509}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{BB04A898-BE60-439E-AADB-87CF352F8CD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Utils", "Library.Utils\Library.Utils.csproj", "{E540405C-388E-44A0-B856-1CCA145D3310}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Utils", "Library.Utils\Library.Utils.csproj", "{E540405C-388E-44A0-B856-1CCA145D3310}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enums", "Enums", "{BFAAF73A-3782-48E7-BA8C-27743B8A9E05}"
+	ProjectSection(SolutionItems) = preProject
+		Operations.cs = Operations.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
