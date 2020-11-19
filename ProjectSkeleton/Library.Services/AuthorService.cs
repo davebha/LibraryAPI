@@ -17,6 +17,7 @@ namespace Library.Services
             _authorRepository = authorRepository;  
         }
 
+        //Create a new author
         public async Task<Author> Create(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -30,6 +31,7 @@ namespace Library.Services
             return await _authorRepository.Create(newAuthor);
         }
 
+        //Delete author using Id in repository
         public async Task DeleteAuthorById(int id)
         {
              var author=await GetById(id);
@@ -37,21 +39,25 @@ namespace Library.Services
             await _authorRepository.DeleteAuthorById(id);
         }
 
+        //Get list of all authors from repository layer and return it to controller
         public async Task<IEnumerable<Author>> GetAll()
         {
             return await _authorRepository.GetAll();
         }
 
+        //Same as GetAll but just a single author and needs author ID
         public async Task<Author> GetById(int id)
         {
             return await _authorRepository.GetById(id);
         }
 
+        //Same as GetById but needs author name instead of ID
         public async Task<Author> GetByName(string name)
         {
             return await _authorRepository.GetByName(name);
         }
 
+        //UpdateAuthor object
         public async Task<Author> UpdateAuthor(Author author)
         {
             //ValidationforName
@@ -67,11 +73,13 @@ namespace Library.Services
             return await _authorRepository.UpdateAuthor(author);
         }
 
+
+        //Update the isAlive property
         public async Task<Author> UpdateIsAlive(int id, bool isAlive)
         {
             var author = await _authorRepository.GetById(id);
 
-            author.IsAlive = isAlive;
+               author.IsAlive = isAlive;
 
             return await _authorRepository.UpdateAuthor(author);
         }
