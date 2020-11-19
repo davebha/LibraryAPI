@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Library.DomainModels;
 using Library.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class BooksController : ControllerBase
     {
         private readonly IBookService _bookService;
@@ -25,17 +27,6 @@ namespace Library.API.Controllers
         {
             return await _bookService.AddBook(title , authorId);
         }
-
-        //[HttpPost]
-        //[Route("api/books")]
-        //public async Task<IActionResult> CreateBook([FromBody]Book passedBook)
-        //{
-        //    var book = await _bookService.AddBook(passedBook.Title,passedBook.AuthorId);
-
-        //    return Ok(book);
-        //}
-
-
 
         //READ
         [HttpGet]
@@ -57,26 +48,26 @@ namespace Library.API.Controllers
             return await _bookService.GetBookByName(title);
         }
 
-        [HttpGet("createdOnDate")]
-        public async  Task<IEnumerable<Book>> GetBookByDate(DateTime createdOnDate)
-        {
-            return await _bookService.GetBookByDate(createdOnDate);
-        }
+        //[HttpGet("createdOnDate")]
+        //public async  Task<IEnumerable<Book>> GetBookByDate(DateTime createdOnDate)
+        //{
+        //    return await _bookService.GetBookByDate(createdOnDate);
+        //}
 
         //UPDATE
 
-
-        public async Task<Book> UpdateBookTitle(string newTitle)
+        [HttpPatch("id")]
+        public async Task<Book> UpdateBookTitle(int id,string newTitle)
         {
 
-            return await _bookService.UpdateBookTitle(newTitle);
+            return await _bookService.UpdateBookTitle(id,newTitle);
 
         }
     
-
-        public async Task<Book> UpdateIsAvailable(bool newStatus)
+        [HttpPatch]
+        public async Task<Book> UpdateIsAvailable(int id,bool newStatus)
         {
-            return await _bookService.UpdateIsAvailable(newStatus);
+            return await _bookService.UpdateIsAvailable(id,newStatus);
 
         }
 
@@ -95,12 +86,6 @@ namespace Library.API.Controllers
             return Ok();
         }
 
-        //DeleteAll
-        [HttpDelete]
-        public async Task RemoveAllBooks()
-        {
-             await _bookService.RemoveAllBooks();
-
-        }
+      
     }
 }
