@@ -29,11 +29,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{BB04A898
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Utils", "Library.Utils\Library.Utils.csproj", "{E540405C-388E-44A0-B856-1CCA145D3310}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enums", "Enums", "{BFAAF73A-3782-48E7-BA8C-27743B8A9E05}"
-	ProjectSection(SolutionItems) = preProject
-		Operations.cs = Operations.cs
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
