@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Library.UnitTests
 {
@@ -20,14 +21,15 @@ namespace Library.UnitTests
         [TestCase("Harry Potter",-1)]
         [TestCase("Cirque du Soleil",0)]
         [TestCase("Watchmen",-3)]
-        public void AddBook_InvalidAuthorId_Exception(string title,int badId) {
+        public async Task AddBook_InvalidAuthorId_Exception(string title,int badId) {
 
             //Arrange->Preparing variables and objects for tests
             Mock<IBookRepository> fakeBookRepo = new Mock<IBookRepository>();
-            BookService bookService = new BookService(fakeBookRepo.Object);
-
+            Mock<ILibraryLogRepository> fakeLogRepo = new Mock<ILibraryLogRepository>();
+            BookService bookService = new BookService(fakeBookRepo.Object,fakeLogRepo.Object);
+           
             //Act->Calling all methods
-            bookService.AddBook(title, badId);
+            await bookService.AddBook(title, badId);
 
             //Assert->Verify result
             Assert.ThrowsAsync<ArgumentException>(() => bookService.AddBook(title,badId));
