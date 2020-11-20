@@ -15,8 +15,8 @@ namespace Library.DomainModels
 
         public string Operation { get; set; }
 
-        [NotNull]
-        public int BookId { get; set; }
+       
+        public int? BookId { get; set; }
 
         [NotNull]
         public DateTime Date { get; set; }
