@@ -44,29 +44,42 @@ namespace Library.Services
             return await _bookRepository.AddBook(newBook);
         }
 
+        //Get all books list using bookrepo and return it to controller
         public async Task<IEnumerable<Book>> GetAllBooks()
         {
             return await _bookRepository.GetAllBooks();
         }
   
-
+        //Get a book using bookrepo through id and return it to controller
         public async Task<Book> GetBookById(int id)
         {
             return await _bookRepository.GetBookById(id);
         }
 
+        //Get a book using bookrepo through title and return it to controller
         public async Task<IEnumerable<Book>> GetBookByName(string title)
         {
             return await _bookRepository.GetBookByName(title);
         }
 
         //Update changes  to specific field  will be done at service layer
-
+        //The changes will be applied using repository layer
 
         public async Task<Book> UpdateBookTitle(int id, string newTitle)
         {
             //Do the validation
+
             
+            if(id<=0)
+            {
+                throw new ArgumentException("id must be number greater than 0  ");
+            }
+
+            if (String.IsNullOrWhiteSpace(newTitle))
+            {
+                throw new ArgumentException("Updated title name is required");
+            }
+
             var book =await  GetBookById(id);
             book.Title = newTitle;
 
@@ -81,22 +94,49 @@ namespace Library.Services
             var book = await _bookRepository.GetBookById(id);
             book.IsAvailable = newStatus;
 
+
+            LibraryLog log = new LibraryLog();
+            log.BookId = id;
+            log.Operation = Operations.Update;
+            log.Date = DateTime.Now;
+
+            _libraryLogRepository.AddLog(log);
+
+            
             return await _bookRepository.UpdateBook(book);
-                
+         
         }
 
+        //Remove book using id and add a log for it using unit of work principle
         public async Task RemoveBook(int id)
         {
-            var book = await GetBookById(id);
+             var book = await GetBookById(id);
 
-            await _bookRepository.RemoveBook(book);
+            LibraryLog log = new LibraryLog();
+            
+            log.BookId = id;
+
+            log.Operation = Operations.Delete;
+
+
+            log.Date = DateTime.Now;
+
+            _libraryLogRepository.AddLog(log);
+            
+            _bookRepository.RemoveBook(book);
+           
+            await _bookRepository.CommitChange();
+
         }
 
-        public async Task RemoveAllBooks()
+        //get the book list from bookrepo and return it to controller
+        public async Task<IEnumerable<Book>> GetBookBetween(DateTime startDate, DateTime endDate)
         {
-            //IEnumerable<Book> books
-            //books
-            await _bookRepository.RemoveAllBooks();
+
+            return await _bookRepository.GetBookBetween(startDate, endDate);
+
+
         }
+
     }
 }
