@@ -11,15 +11,20 @@ namespace Library.Services
 {
     public class BookService : IBookService
     {
+        
         private readonly IBookRepository _bookRepository;
+        private readonly ILibraryLogRepository _libraryLogRepository;
 
-        public BookService(IBookRepository bookRepository)
+        public BookService(IBookRepository bookRepository,ILibraryLogRepository libraryLogRepository)
         {
             _bookRepository = bookRepository;
-
+            _libraryLogRepository = libraryLogRepository;
+            
 
         }
      
+       
+
         public async Task<Book>  AddBook(string title, int authorId)
         {
             if (authorId <= 0)
